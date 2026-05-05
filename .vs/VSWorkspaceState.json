@@ -1,0 +1,22 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\HttpServer",
+    "\\HttpServer\\include",
+    "\\HttpServer\\include\\ssl",
+    "\\HttpServer\\src",
+    "\\HttpServer\\src\\router",
+    "\\HttpServer\\src\\session",
+    "\\HttpServer\\src\\ssl",
+    "\\WebApps",
+    "\\WebApps\\GomokuServer"
+  ],
+  "SelectedNode": "\\HttpServer\\include\\http\\HttpContext.h",
+  "PreviewInSolutionExplorer": false
+}

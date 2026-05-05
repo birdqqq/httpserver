@@ -1,0 +1,220 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpServer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\include\\http\\HttpServer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\src\\http\\HttpServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpResponse.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\src\\http\\HttpResponse.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpResponse.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\include\\http\\HttpResponse.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpContext.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\src\\http\\HttpContext.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\ssl\\SslConnection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\include\\ssl\\SslConnection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpContext.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\include\\http\\HttpContext.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpRequest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\src\\http\\HttpRequest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpRequest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpServer\\include\\http\\HttpRequest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|CMake \u6982\u8FF0\u9875||{B1CAA5B0-FEB1-4350-8AB9-F895876842F2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SslConnection.h",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\ssl\\SslConnection.h",
+              "RelativeDocumentMoniker": "HttpServer\\include\\ssl\\SslConnection.h",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\ssl\\SslConnection.h",
+              "RelativeToolTip": "HttpServer\\include\\ssl\\SslConnection.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T13:34:05.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HttpServer.h",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpServer.h",
+              "RelativeDocumentMoniker": "HttpServer\\include\\http\\HttpServer.h",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpServer.h",
+              "RelativeToolTip": "HttpServer\\include\\http\\HttpServer.h",
+              "ViewState": "AgIAABcAAAAAAAAAAADwv4UAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-02T02:24:25.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HttpServer.cpp",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpServer.cpp",
+              "RelativeDocumentMoniker": "HttpServer\\src\\http\\HttpServer.cpp",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpServer.cpp",
+              "RelativeToolTip": "HttpServer\\src\\http\\HttpServer.cpp",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAwKkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-02T02:24:21.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HttpResponse.h",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpResponse.h",
+              "RelativeDocumentMoniker": "HttpServer\\include\\http\\HttpResponse.h",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpResponse.h",
+              "RelativeToolTip": "HttpServer\\include\\http\\HttpResponse.h",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-01T07:21:48.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HttpResponse.cpp",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpResponse.cpp",
+              "RelativeDocumentMoniker": "HttpServer\\src\\http\\HttpResponse.cpp",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpResponse.cpp",
+              "RelativeToolTip": "HttpServer\\src\\http\\HttpResponse.cpp",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-01T07:28:20.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HttpContext.h",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpContext.h",
+              "RelativeDocumentMoniker": "HttpServer\\include\\http\\HttpContext.h",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpContext.h",
+              "RelativeToolTip": "HttpServer\\include\\http\\HttpContext.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAADwvxsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-05T13:14:53.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HttpContext.cpp",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpContext.cpp",
+              "RelativeDocumentMoniker": "HttpServer\\src\\http\\HttpContext.cpp",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpContext.cpp",
+              "RelativeToolTip": "HttpServer\\src\\http\\HttpContext.cpp",
+              "ViewState": "AgIAAAIAAAAAAAAAAADwvw4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-01T07:22:28.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HttpRequest.cpp",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpRequest.cpp",
+              "RelativeDocumentMoniker": "HttpServer\\src\\http\\HttpRequest.cpp",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\src\\http\\HttpRequest.cpp",
+              "RelativeToolTip": "HttpServer\\src\\http\\HttpRequest.cpp",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-01T07:22:00.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HttpRequest.h",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpRequest.h",
+              "RelativeDocumentMoniker": "HttpServer\\include\\http\\HttpRequest.h",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\HttpServer\\include\\http\\HttpRequest.h",
+              "RelativeToolTip": "HttpServer\\include\\http\\HttpRequest.h",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-05T13:16:02.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "CMakeLists.txt",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\CMakeLists.txt",
+              "RelativeToolTip": "CMakeLists.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-06-05T13:00:56.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "README.md",
+              "DocumentMoniker": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "F:\\a\u9879\u76EE\\Kama-HTTPServer-main\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-06-05T12:58:01.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CMake \u6982\u8FF0\u9875",
+              "DocumentMoniker": "CMake \u6982\u8FF0\u9875",
+              "ToolTip": "CMake \u6982\u8FF0\u9875",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-05T12:57:44.871Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
