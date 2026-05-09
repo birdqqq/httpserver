@@ -21,11 +21,13 @@ GomokuServer::GomokuServer(int port,
     initialize();
 }
 
+//q 可以看出 GomokuServer只是包装，真正地线程池在HttpServer中
 void GomokuServer::setThreadNum(int numThreads)
 {
     httpServer_.setThreadNum(numThreads);
 }
 
+//q 真正的网络启动在HttpServer中，listen accept epoll eventloop均在HttpServer中
 void GomokuServer::start()
 {
     httpServer_.start();
@@ -34,7 +36,10 @@ void GomokuServer::start()
 void GomokuServer::initialize()
 {
     // 初始化数据库连接池
-    http::MysqlUtil::init("tcp://127.0.0.1:3306", "root", "root", "Gomoku", 10);
+    //http::MysqlUtil::init("tcp://127.0.0.1:3306", "root", "root", "Gomoku", 10);
+    //q 原作者的数据库用户名root 密码 root 数据库名Gomoku 本地在配置时使用的时下列参数-->项目本地化适配
+    //q 10表示连接池大小，允许最多10个数据库链接
+    http::MysqlUtil::init("tcp://127.0.0.1:3306", "httpuser", "123456", "httpserver", 10);
     // 初始化会话
     initializeSession();
     // 初始化中间件
@@ -46,6 +51,7 @@ void GomokuServer::initialize()
 void GomokuServer::initializeSession()
 {
     // 创建会话存储
+    //q make_unique创建uniqur_ptr管理动态内存，指向一个MemorySessionSrorage类
     auto sessionStorage = std::make_unique<http::session::MemorySessionStorage>();
     // 创建会话管理器
     auto sessionManager = std::make_unique<http::session::SessionManager>(std::move(sessionStorage));
@@ -53,6 +59,7 @@ void GomokuServer::initializeSession()
     setSessionManager(std::move(sessionManager));
 }
 
+//q 初始化中间件，实现跨域（不同端口=跨域）
 void GomokuServer::initializeMiddleware()
 {
     // 创建中间件
@@ -80,6 +87,7 @@ void GomokuServer::initializeRouter()
     // 下棋
     httpServer_.Post("/aiBot/move", std::make_shared<AiGameMoveHandler>(this));
     // 重新开始对战ai
+    //q lambda表达式捕获当前对象GomokuServer对象，调用成员函数reestartChessGmaeVsAi()
     httpServer_.Get("/aiBot/restart", 
     [this](const http::HttpRequest& req, http::HttpResponse* resp) {
             restartChessGameVsAi(req, resp);
@@ -88,7 +96,8 @@ void GomokuServer::initializeRouter()
     // 后台界面
     httpServer_.Get("/backend", std::make_shared<GameBackendHandler>(this));
     // 后台数据获取
-    httpServer_.Get("/backend_data", [this](const http::HttpRequest& req, http::HttpResponse* resp) {
+    httpServer_.Get("/backend_data", 
+        [this](const http::HttpRequest& req, http::HttpResponse* resp) {
         getBackendData(req, resp);
     });
 }

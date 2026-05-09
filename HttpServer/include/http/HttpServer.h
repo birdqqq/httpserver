@@ -29,10 +29,12 @@ class HttpResponse;
 
 namespace http
 {
-
+//q 继承moduo的nocopyable 禁止拷贝 即禁止HttpServer b=a; 因为a中有socket epoll thread mutex资源
 class HttpServer : muduo::noncopyable
 {
 public:
+    //q http请求处理函数   std::function 可调用对象统一封装 
+    //q 封装了一个void 接收const http::HttpRequest&, http::HttpResponse* 参数
     using HttpCallback = std::function<void (const http::HttpRequest&, http::HttpResponse*)>;
     
     // 构造函数
@@ -48,11 +50,13 @@ public:
 
     void start();
 
+    //q Eventloop是moduo库的核心
     muduo::net::EventLoop* getLoop() const 
     { 
         return server_.getLoop(); 
     }
 
+    //q 设置回调函数 
     void setHttpCallback(const HttpCallback& cb)
     {
         httpCallback_ = cb;
