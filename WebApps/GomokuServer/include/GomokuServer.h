@@ -40,16 +40,17 @@ public:
     void setThreadNum(int numThreads);//q 设置线程数
     void start();//q 启动服务器
 private:
-    void initialize();//q 总初始化（数据库，路由。session）
+    void initialize();//q 总初始化（数据库，路由，session）
     void initializeSession();//q 支持用户登陆状态
-    void initializeRouter();//q 有Http路由系统
+    void initializeRouter();//q Http路由系统
     void initializeMiddleware();//q 支持中间件
     
     //q 框架设计开始
     void setSessionManager(std::unique_ptr<http::session::SessionManager> manager)
     //q unique_ptr c++的一种独占所有权的智能指针，独占所有权：同时只能有一个unique_ptr只想某对象
     {
-        httpServer_.setSessionManager(std::move(manager));//q   所有权转移
+        httpServer_.setSessionManager(std::move(manager));//q 所有权转移，因为GomokuServer是对httpServer的封装 直接将管理者转移给httpServer即可
+                                                          //q move()函数是移动至新位置，原位置清空了
     }
     //q 对HttpServer的封装
     http::session::SessionManager*  getSessionManager() const

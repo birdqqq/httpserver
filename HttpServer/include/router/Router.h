@@ -22,15 +22,17 @@ namespace router
 class Router
 {
 public:
-    using HandlerPtr = std::shared_ptr<RouterHandler>;
-    using HandlerCallback = std::function<void(const HttpRequest &, HttpResponse *)>;
+    using HandlerPtr = std::shared_ptr<RouterHandler>;//q 保存handler对象的指针，用于保存：loginhandler menuhandler registerhandler等
+    using HandlerCallback = std::function<void(const HttpRequest &, HttpResponse *)>;//q 处理器 支持lambda表达式（简单业务）和类对象（复杂业务）
 
     // 路由键（请求方法 + URI）
+    //q 就是路由表的key,分为两部分：method + path eg:GET /Login 
     struct RouteKey
     {
         HttpRequest::Method method;
         std::string path;
 
+        //q 运算符重载，比较两请求的key是否相同：要求方法和路径同时相等
         bool operator==(const RouteKey &other) const
         {
             return method == other.method && path == other.path;
@@ -45,10 +47,14 @@ public:
         //     return std::hash<int>{}(static_cast<int>(key.method)) ^
         //            std::hash<std::string>{}(key.path);
         // }
+        //q 重载 () 运算符，使得RouteKeyHash可以被调用
         size_t operator()(const RouteKey &key) const
         {
+            //q 将key中的method（方法）（枚举类型）转换为显式类型转换为int
             size_t methodHash = std::hash<int>{}(static_cast<int>(key.method));
+            //q 将key中的path（路径）用标准库中的字符串哈希函数计算哈希值
             size_t pathHash = std::hash<std::string>{}(key.path);
+            //q 计算key对应的哈希值
             return methodHash * 31 + pathHash;
         }
     };
@@ -70,7 +76,7 @@ public:
     void addRegexCallback(HttpRequest::Method method, const std::string &path, const HandlerCallback &callback)
     {
         std::regex pathRegex = convertToRegex(path);
-        regexCallbacks_.emplace_back(method, pathRegex, callback);
+        regexCallbacks_.emplace_back(method, pathRegex, callback);//q emplace_back直接在vector中构造添加对象比push_back高效
     }
 
     // 处理请求

@@ -39,7 +39,7 @@ void GomokuServer::initialize()
     //http::MysqlUtil::init("tcp://127.0.0.1:3306", "root", "root", "Gomoku", 10);
     //q 原作者的数据库用户名root 密码 root 数据库名Gomoku 本地在配置时使用的时下列参数-->项目本地化适配
     //q 10表示连接池大小，允许最多10个数据库链接
-    http::MysqlUtil::init("tcp://127.0.0.1:3306", "httpuser", "123456", "httpserver", 10);
+    http::MysqlUtil::init("tcp://127.0.0.1:3306", "httpuser", "123456", "httpserver", 10);//q 连接数据库
     // 初始化会话
     initializeSession();
     // 初始化中间件
@@ -51,7 +51,7 @@ void GomokuServer::initialize()
 void GomokuServer::initializeSession()
 {
     // 创建会话存储
-    //q make_unique创建uniqur_ptr管理动态内存，指向一个MemorySessionSrorage类
+    //q make_unique创建uniqur_ptr管理动态内存，指向一个MemorySessionSrorage类 unique_ptr指针独占所有权
     auto sessionStorage = std::make_unique<http::session::MemorySessionStorage>();
     // 创建会话管理器
     auto sessionManager = std::make_unique<http::session::SessionManager>(std::move(sessionStorage));
