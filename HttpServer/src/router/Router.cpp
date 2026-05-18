@@ -11,7 +11,7 @@ void Router::registerHandler(HttpRequest::Method method, const std::string &path
     RouteKey key{method, path};
     handlers_[key] = std::move(handler);
 }
-//q 使用哈桑农户处理器 对于简单业务 HandlerCallback函数容器 存储处理函数支持lambda表达式
+//q 使用函数处理器 对于简单业务 HandlerCallback函数容器 存储处理函数支持lambda表达式
 void Router::registerCallback(HttpRequest::Method method, const std::string &path, const HandlerCallback &callback)
 {
     RouteKey key{method, path};

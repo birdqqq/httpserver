@@ -8,8 +8,11 @@ void HttpResponse::appendToBuffer(muduo::net::Buffer* outputBuf) const
     // HttpResponse封装的信息格式化输出
     char buf[32]; 
     // 为什么不把状态信息放入格式化字符串中，因为状态信息有长有短，不方便定义一个固定大小的内存存储
+    //q snprintf()详见文档
     snprintf(buf, sizeof buf, "%s %d ", httpVersion_.c_str(), statusCode_);
     
+    //q 经过snprintf() buf里放的就是“HTTP/1.1 200”
+    //q buffer中的append()函数是在buffer尾部添加数据  buffer是moduo中封装的可动态增长的缓冲区
     outputBuf->append(buf);
     outputBuf->append(statusMessage_);
     outputBuf->append("\r\n");

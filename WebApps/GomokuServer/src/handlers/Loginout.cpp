@@ -34,9 +34,15 @@ void LogoutHandler::handle(const http::HttpRequest &req, http::HttpResponse *res
         }
 
         if (gameType == GomokuServer::MAN_VS_AI)
+        // {
+        //     std::lock_guard<std::mutex> lock(server_->mutexForAiGames_);
+        //     server_->aiGames_.erase(userId);
+        // }
+        //q 读写锁
         {
-            std::lock_guard<std::mutex> lock(server_->mutexForAiGames_);
-            server_->aiGames_.erase(userId);
+        // 写操作：独占锁
+        std::unique_lock<std::shared_mutex> writeLock(server_->mutexForOnlineUsers_);
+        server_->onlineUsers_[userId] = false;
         }
         else if (gameType == GomokuServer::MAN_VS_MAN)
         {

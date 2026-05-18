@@ -52,7 +52,7 @@ void GomokuServer::initializeSession()
 {
     // 创建会话存储
     //q make_unique创建uniqur_ptr管理动态内存，指向一个MemorySessionSrorage类 unique_ptr指针独占所有权
-    auto sessionStorage = std::make_unique<http::session::MemorySessionStorage>();
+    auto sessionStorage = std::make_unique<http::session::MemorySessionStorage>();//q 所有权需要被独占！ 注意区别于中间件资源的shared_ptr！
     // 创建会话管理器
     auto sessionManager = std::make_unique<http::session::SessionManager>(std::move(sessionStorage));
     // 设置会话管理器
@@ -63,7 +63,8 @@ void GomokuServer::initializeSession()
 void GomokuServer::initializeMiddleware()
 {
     // 创建中间件
-    auto corsMiddleware = std::make_shared<http::middleware::CorsMiddleware>();
+    auto corsMiddleware = std::make_shared<http::middleware::CorsMiddleware>();//q 这里是shared_ptr 区别于session中的unique_ptr,这里的中间件可能被多
+                                                                               //个地方引用，所以使用共享指针，内部含有计数器，全部释放后才会销毁对象。
     // 添加中间件
     httpServer_.addMiddleware(corsMiddleware);
 }
@@ -72,6 +73,7 @@ void GomokuServer::initializeRouter()
 {
     // 注册url回调处理器
     // 登录注册入口页面
+    //q **Handler对应的是复杂业务的类处理器   lambda表达式对应的是简单业务的函数处理器
     httpServer_.Get("/", std::make_shared<EntryHandler>(this));
     httpServer_.Get("/entry", std::make_shared<EntryHandler>(this));
     // 登录
@@ -112,7 +114,7 @@ void GomokuServer::restartChessGameVsAi(const http::HttpRequest &req, http::Http
         json errorResp;
         errorResp["status"] = "error";
         errorResp["message"] = "Unauthorized";
-        std::string errorBody = errorResp.dump(4);
+        std::string errorBody = errorResp.dump(4);//q json缩进4 美观
 
         packageResp(req.getVersion(), http::HttpResponse::k401Unauthorized,
                     "Unauthorized", true, "application/json", errorBody.size(),
@@ -123,12 +125,13 @@ void GomokuServer::restartChessGameVsAi(const http::HttpRequest &req, http::Http
     int userId = std::stoi(session->getValue("userId"));
     {
         // 重新开始ai对战
-        std::lock_guard<std::mutex> lock(mutexForAiGames_);
+        std::lock_guard<std::mutex> lock(mutexForAiGames_);//q ai棋局上锁 防止用户A在多个线程重启棋局，引发数据竞争，程序崩溃
         if (aiGames_.find(userId) != aiGames_.end())
-            aiGames_.erase(userId);
-        aiGames_[userId] = std::make_shared<AiGame>(userId);
+            aiGames_.erase(userId);//q 找到对应id，擦除该项
+        aiGames_[userId] = std::make_shared<AiGame>(userId);//q 重新分配 --> 重启棋局
     }
 
+    //q 将重启结果写道json中 通过packageResp()打包成http响应返回客户端
     json successResp;
     successResp["status"] = "ok";
     successResp["message"] = "restart successful";
@@ -172,7 +175,7 @@ void GomokuServer::getBackendData(const http::HttpRequest &req, http::HttpRespon
 
         LOG_INFO << "Backend data response prepared successfully";
     }
-    catch (const std::exception& e) 
+    catch (const std::exception& e) //q exception 常见异常
     {
         LOG_ERROR << "Error in getBackendData: " << e.what();
         
@@ -192,14 +195,14 @@ void GomokuServer::getBackendData(const http::HttpRequest &req, http::HttpRespon
     }
 }
 
-void GomokuServer::packageResp(const std::string &version,
-                             http::HttpResponse::HttpStatusCode statusCode,
-                             const std::string &statusMsg,
-                             bool close,
-                             const std::string &contentType,
-                             int contentLen,
-                             const std::string &body,
-                             http::HttpResponse *resp)
+void GomokuServer::packageResp(const std::string &version,                                      //q http/1.0 1.1
+                             http::HttpResponse::HttpStatusCode statusCode,                     //q 状态码 200 401 ...
+                             const std::string &statusMsg,                                      //q 'OK' 'unauthorized'...
+                             bool close,                                                        //q 是否断开连接
+                             const std::string &contentType,                                    //q 'application/json'-->body形式：json
+                             int contentLen,                                                    //q body长度
+                             const std::string &body,                                           //q body体
+                             http::HttpResponse *resp)                                          //q 封装进resp中
 {
     if (resp == nullptr) 
     {
@@ -209,6 +212,7 @@ void GomokuServer::packageResp(const std::string &version,
 
     try 
     {
+        //q 封装http响应
         resp->setVersion(version);
         resp->setStatusCode(statusCode);
         resp->setStatusMessage(statusMsg);

@@ -3,7 +3,7 @@
 using namespace muduo;
 using namespace muduo::net;
 
-//state_ :是一个状态机 用于管理当前解析的的状态：解析请求行 kExpectRequestLine 
+//state_:是一个状态机 用于管理当前解析的的状态：   解析请求行 kExpectRequestLine 
 //                                               解析请求头 kExpectHeaders
 //                                               解析请求体 kExpectBody
 //                                               解析完成   kGotall
@@ -143,29 +143,30 @@ bool HttpContext::processRequestLine(const char *begin, const char *end)
     bool succeed = false; //初始化解析状态
     const char *start = begin;
     const char *space = std::find(start, end, ' ');//使用space接受“空格”的地址 
-    if (space != end && request_.setMethod(start, space))
+    if (space != end && request_.setMethod(start, space))//setMethod()接收字符串返回请求方法（合法:1 非法:0）
     {
         start = space + 1; //更新起始位置
         space = std::find(start, end, ' '); //寻找第二个空格
+        //q 此时start space 之间是 "/search?q=apple&limit=10"
         if (space != end)
         {
             const char *argumentStart = std::find(start, space, '?');
-            if (argumentStart != space) // 请求带参数
+            if (argumentStart != space) // 请求中带参数
             {
                 request_.setPath(start, argumentStart); // 注意这些返回值边界 提取路径信息
                 request_.setQueryParameters(argumentStart + 1, space); //提取查询参数
             }
-            else // 请求不带参数
+            else // 请求中不带参数
             {
                 request_.setPath(start, space); //请求行中没有参数 证明两空格中是路径 直接提取路径信息
             }
 
             start = space + 1;
-            succeed = ((end - start == 8) && std::equal(start, end - 1, "HTTP/1."));//请求行的版本号必须是8为！
+            succeed = ((end - start == 8) && std::equal(start, end - 1, "HTTP/1."));//请求行的版本号必须是8位！
                                                                                     //并且前七位必须是：HTTP/1.，表示该服务器兼容http1.0和1.1两版本 
             if (succeed)
             {
-                if (*(end - 1) == '1')//*(end-1)对指针end-1解引用 取地址指向的值
+                if (*(end - 1) == '1')//*(end-1)对指针end-1解引用 取指向的值
                 {
                     request_.setVersion("HTTP/1.1");
                 }

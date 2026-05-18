@@ -95,8 +95,8 @@ void HttpRequest::setQueryParameters(const char *start, const char *end)
         if (equalPos != std::string::npos)//q 找到了
         {
             std::string key = pair.substr(0, equalPos);//q key=name
-            std::string value = pair.substr(equalPos + 1);//q value=小明
-            queryParameters_[key] = value;//q 存到mao中
+            std::string value = pair.substr(equalPos + 1);//q value=小明 substr()一个参数表示从该位置开始到字符串末尾结束
+            queryParameters_[key] = value;//q 存到map中
         }
 
         prev = pos + 1;//q 更新prev
