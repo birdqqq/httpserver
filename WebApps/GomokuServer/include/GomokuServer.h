@@ -131,8 +131,8 @@ private:
     // userId -> 是否在游戏中
     //q 用户在线表
     std::unordered_map<int, bool>                    onlineUsers_;
-    // std::mutex                                       mutexForOnlineUsers_; 
-    std::shared_mutex                                mutexForOnlineUsers_;//q 将原来的自动管理锁-->读写锁 这样,读:不会互斥 写:单线程独占
+    std::mutex                                       mutexForOnlineUsers_; 
+    // std::shared_mutex                                mutexForOnlineUsers_;//q 将原来的自动管理锁-->读写锁 这样,读:不会互斥 写:单线程独占
     // 最高在线人数
     std::atomic<int>                                 maxOnline_;
 };

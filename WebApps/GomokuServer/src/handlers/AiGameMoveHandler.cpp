@@ -1,5 +1,7 @@
 #include "../include/handlers/AiGameMoveHandler.h"
 
+//q 下棋的请求与响应是每下一步向服务器请求一次 做出响应之后渲染网页（渲染下的棋） 循环直到游戏结束
+
 void AiGameMoveHandler::handle(const http::HttpRequest &req, http::HttpResponse *resp)
 {
     try

@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 
+//q 维护期盼状态 人类下棋 ai下棋
 
 AiGame::AiGame(int userId)
     : gameOver_(false)
@@ -79,6 +80,7 @@ int AiGame::evaluateThreat(int r, int c)
 // 辅助函数：判断某个空位是否靠近已有棋子
 bool AiGame::isNearOccupied(int r, int c) 
 {
+    //q 8个方向
     const int directions[8][2] = {
         {1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}
     };
@@ -100,25 +102,31 @@ bool AiGame::checkWin(int x, int y, const std::string& player)
     const int dx[] = {1, 0, 1, 1};
     const int dy[] = {0, 1, 1, -1};
     
-    for (int dir = 0; dir < 4; dir++) 
+    for (int dir = 0; dir < 4; dir++) //q dir--> 表示检查的方向 0-->x轴正方向 
+                                      //q                      1-->y轴正方向
+                                      //q                      2-->对角线x+ y+ 方向
+                                      //q                      3-->对角线x+ y- 方向
+                                      //q 因为分为正向检查和反向检查 所以区分四个方向即可
     {
         int count = 1;  // 当前位置已经有一个棋子
         
         // 正向检查
         for (int i = 1; i < 5; i++) 
         {
+            //q x/y + 表示正向
             int newX = x + dx[dir] * i;
             int newY = y + dy[dir] * i;
-            if (!isInBoard(newX, newY) || board_[newX][newY] != player) break;
+            if (!isInBoard(newX, newY) || board_[newX][newY] != player) break;//q 超出边界或者有对家棋子break
             count++;
         }
         
         // 反向检查
         for (int i = 1; i < 5; i++) 
         {
+            //q x/y - 表示反向
             int newX = x - dx[dir] * i;
             int newY = y - dy[dir] * i;
-            if (!isInBoard(newX, newY) || board_[newX][newY] != player) break;
+            if (!isInBoard(newX, newY) || board_[newX][newY] != player) break;//q 超出边界或者有对家棋子break
             count++;
         }
         

@@ -41,34 +41,34 @@ void LoginHandler::handle(const http::HttpRequest &req, http::HttpResponse *resp
             session->setValue("userId", std::to_string(userId));
             session->setValue("username", username);
             session->setValue("isLoggedIn", "true");
-            // if (server_->onlineUsers_.find(userId) == server_->onlineUsers_.end() || server_->onlineUsers_[userId] == false)
+            if (server_->onlineUsers_.find(userId) == server_->onlineUsers_.end() || server_->onlineUsers_[userId] == false)
             //q 在线用户表中没有当前用户 || 当前用户已经下线false    onlineUsers_是一个map<int,bool>   表示是否首次登陆或离线后登录
 
             //q 读写锁 改编
             //q 读写锁 共享锁 安全的读 原代码if(...)读的时候直接读 没有锁
-            bool isOnline = false;//声明一个bool表示用户是否在线
-            {
-                std::shared_lock<std::shared_mutex> readLock(server_->mutexForOnlineUsers_);
-                //  ↑共享锁，多线程可以同时读
+            // bool isOnline = false;//声明一个bool表示用户是否在线
+            // {
+            //     std::shared_lock<std::shared_mutex> readLock(server_->mutexForOnlineUsers_);
+            //     //  ↑共享锁，多线程可以同时读
 
-                auto it = server_->onlineUsers_.find(userId);
-                isOnline = (it != server_->onlineUsers_.end() && it->second == true);
-            }
-            if(!isOnline)//q 如果当前用户不在线则可以登录
+            //     auto it = server_->onlineUsers_.find(userId);
+            //     isOnline = (it != server_->onlineUsers_.end() && it->second == true);
+            // }
+            // if(!isOnline)//q 如果当前用户不在线则可以登录
             {
                 //q 原自动管理锁
-                // {
-                //     std::lock_guard<std::mutex> lock(server_->mutexForOnlineUsers_);//加锁防止多个用户同时修改onlineUsers_,产生竞争
-                //     server_->onlineUsers_[userId] = true;
-                // }
+                {
+                    std::lock_guard<std::mutex> lock(server_->mutexForOnlineUsers_);//加锁防止多个用户同时修改onlineUsers_,产生竞争
+                    server_->onlineUsers_[userId] = true;
+                }
                 //q 加大括号的原因 因为只有修改onlineUsers_时才需要加锁 所以将这两步用大括号括起来 修改完onlineUsers_自动解锁 后面的步骤不需要加锁！
                 
-                //q 读写锁
-                {
-                // 写操作：独占锁，只有一个线程能写
-                std::unique_lock<std::shared_mutex> writeLock(server_->mutexForOnlineUsers_);
-                server_->onlineUsers_[userId] = true;
-                }  // 自动解锁
+                // //q 读写锁
+                // {
+                // // 写操作：独占锁，只有一个线程能写
+                // std::unique_lock<std::shared_mutex> writeLock(server_->mutexForOnlineUsers_);
+                // server_->onlineUsers_[userId] = true;
+                // }  // 自动解锁
 
                 // 更新历史最高在线人数
                 server_->updateMaxOnline(server_->onlineUsers_.size());

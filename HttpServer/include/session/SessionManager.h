@@ -36,8 +36,9 @@ private:
     void setSessionCookie(const std::string& sessionId, HttpResponse* resp);
 
 private:
-    std::unique_ptr<SessionStorage> storage_;
-    std::mt19937 rng_; // 用于生成随机会话id
+    std::unique_ptr<SessionStorage> storage_;//q session仓库 存的是sessionID-->Session对象  类似于 abc123-->用户qhn
+    std::mt19937 rng_; // 用于生成随机会话id q mt19937类型（梅森旋转算法） 伪随机数生成器 
+    //                                      q 在构造中使用random_device生成真随机数作为种子使用rng_shengcheng SessionID 见文档
 };
 
 } // namespace session

@@ -62,13 +62,13 @@ public:
         httpCallback_ = cb;
     }
 
-    // 注册静态路由处理器
+    // 注册静态路由处理器 函数处理器
     void Get(const std::string& path, const HttpCallback& cb)
     {
         router_.registerCallback(HttpRequest::kGet, path, cb);
     }
     
-    // 注册静态路由处理器
+    // 注册静态路由处理器 类处理器 下面同理
     void Get(const std::string& path, router::Router::HandlerPtr handler)
     {
         router_.registerHandler(HttpRequest::kGet, path, handler);

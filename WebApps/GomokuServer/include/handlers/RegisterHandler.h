@@ -13,6 +13,6 @@ private:
     int insertUser(const std::string& username, const std::string& password);
     bool isUserExist(const std::string& username);
 private:
-    GomokuServer* server_;
+    GomokuServer*       server_;
     http::MysqlUtil     mysqlUtil_;
 };

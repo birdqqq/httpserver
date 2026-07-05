@@ -24,7 +24,7 @@ bool Session::isExpired() const
 // 刷新会话的过期时间
 void Session::refresh()
 {
-    expiryTime_ = std::chrono::system_clock::now() + std::chrono::seconds(maxAge_);
+    expiryTime_ = std::chrono::system_clock::now() + std::chrono::seconds(maxAge_); //q 比如session创建时间是12:00 则expiryTome=13:00
 }
 
 // 设置会话数据
@@ -34,7 +34,9 @@ void Session::setValue(const std::string& key, const std::string& value)
     // 如果设置了manager，自动保存更改
     if (sessionManager_)
     {
-        sessionManager_->updateSession(shared_from_this());
+        sessionManager_->updateSession(shared_from_this());//q 更新session之后 需要让storage中的session也更新，否则只是在内存中改了session值
+                                                           //q 使用shared_from_this() 是因为共享智能指针 更安全  
+                                                           //q shared_from_this()表示生成指向当前对象的shared_ptr             
     }
 }
 

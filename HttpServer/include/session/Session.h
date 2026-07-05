@@ -13,7 +13,9 @@ namespace session
 
 class SessionManager;
 
-class Session : public std::enable_shared_from_this<Session>
+//q 本质是服务器中的用户档案
+
+class Session : public std::enable_shared_from_this<Session>//q 见文档  使Session安全的shared_ptr<自己>
 {
 public:
     Session(const std::string& sessionId, SessionManager* sessionManager, int maxAge = 3600); // 默认1小时过期
@@ -21,10 +23,10 @@ public:
     const std::string& getId() const 
     { return sessionId_; }
 
-    bool isExpired() const;
+    bool isExpired() const;//q  判断是否过期
     void refresh(); // 刷新过期时间
 
-    void setManager(SessionManager* sessionManager) 
+    void setManager(SessionManager* sessionManager) //q 重新设置管理器 一般用于重新加载时
     { sessionManager_ = sessionManager; }
 
     SessionManager* getManager() const 
@@ -37,7 +39,7 @@ public:
     void clear();
 private:
     std::string                                  sessionId_;
-    std::unordered_map<std::string, std::string> data_;
+    std::unordered_map<std::string, std::string> data_; //q 存用户数据的地方
     std::chrono::system_clock::time_point        expiryTime_;
     int                                          maxAge_; // 过期时间（秒）
     SessionManager*                              sessionManager_;
